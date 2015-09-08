@@ -1,0 +1,5 @@
+[
+    { "abflugOrt": "Graz", "zielOrt": "Wien", "id": "LH4711", "datum": "2015-01-01" },
+    { "abflugOrt": "Graz", "zielOrt": "Frankfurt", "id": "LH4712", "datum": "2015-01-01" },
+    { "abflugOrt": "Graz", "zielOrt": "Hamburg", "id": "LH4713", "datum": "2015-01-01" }
+]

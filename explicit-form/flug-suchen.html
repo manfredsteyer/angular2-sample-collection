@@ -1,0 +1,57 @@
+<div class="container">
+
+    <h1>Flug suchen</h1>
+    
+    <div [ng-form-model]="filter">
+        
+        <div class="form-group">
+            <label for="von">Von: </label>
+            <input id="von" ng-control="von" type="text" class="form-control">
+            <div *ng-if="!filter.controls.von.valid">Bitte geben Sie einen Abflugort an.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="nach">Nach: </label>
+            <input id="nach" ng-control="nach" type="text" class="form-control">
+            <div *ng-if="!filter.controls.nach.valid">Bitte geben Sie einen Zielort an!</div>
+        </div>
+
+        <div class="form-group">
+            <input type="button" value="Suchen" (click)="flugSuchen()" class="btn">
+        </div>
+
+    </div>
+
+    <div *ng-if="message" class="alert alert-info alert-dismissible" >
+        {{ message }}
+    </div>
+    
+    <table class="table table-striped" *ng-if="fluege.length != 0">
+
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Datum</th>
+            <th>Von</th>
+            <th>Nach</th>
+            <th>Aktion</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            
+            <tr *ng-for="#flug of fluege" [class.info]="selectedFlug == flug">
+
+                <td>{{flug.id}}</td>
+                <td>{{flug.datum.substr(0,10)}}</td>
+                <td>{{flug.abflugort}}</td>
+                <td>{{flug.zielort}}</td>
+
+                <td><a href="#" (click)="selectFlug(flug)">Auswählen</a></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

@@ -1,0 +1,9 @@
+<h1>Two-Way-Databinding-Demo</h1>
+<div>
+	Current Option: {{ option }}
+</div>
+<div>
+	<option-box [value]="option" (value)="option = $event"></option-box>
+
+	<option-box [(value)]="option"></option-box>
+</div>
