@@ -13,7 +13,14 @@ export class CityValidator {
 	get validator() { return CityValidator.validate; }
 	
 	static validate(c) {
-		if (c.value != "Graz") {
+		
+		var validValues = ["Graz", "Hamburg", "Wien", "Frankfurt"];
+		
+		var cnt = validValues
+					.filter(item => item == c.value)
+					.length; 
+
+		if (cnt == 0) {
 			return { city: true };
 		}
 	}

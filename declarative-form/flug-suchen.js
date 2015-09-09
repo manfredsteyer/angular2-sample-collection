@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", 'angular2/angular2', 'angular2/angular2', 'flug-service', 'city'], function (require, exports, angular2_1, angular2_2, flug_service_1, city_1) {
     var FlugSuchen = (function () {
-        function FlugSuchen(flugService, fb) {
+        function FlugSuchen(flugService) {
             this.fluege = [];
             this.filter = {
                 von: 'Graz',
@@ -20,10 +20,7 @@ define(["require", "exports", 'angular2/angular2', 'angular2/angular2', 'flug-se
             };
             this.flugService = flugService;
         }
-        FlugSuchen.prototype.selectFlug = function (flug) {
-            this.selectedFlug = flug;
-        };
-        FlugSuchen.prototype.flugSuchen = function (f) {
+        FlugSuchen.prototype.flugSuchen = function () {
             var _this = this;
             var filter = this.filter;
             this
@@ -34,6 +31,9 @@ define(["require", "exports", 'angular2/angular2', 'angular2/angular2', 'flug-se
                 _this.message = fluege.length + " Flüge geladen!";
             });
         };
+        FlugSuchen.prototype.selectFlug = function (flug) {
+            this.selectedFlug = flug;
+        };
         FlugSuchen = __decorate([
             angular2_1.Component({
                 selector: 'flug-suchen'
@@ -42,7 +42,7 @@ define(["require", "exports", 'angular2/angular2', 'angular2/angular2', 'flug-se
                 templateUrl: 'flug-suchen.html',
                 directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_2.FORM_DIRECTIVES, city_1.CityValidator]
             }), 
-            __metadata('design:paramtypes', [flug_service_1.FlugService, angular2_2.FormBuilder])
+            __metadata('design:paramtypes', [flug_service_1.FlugService])
         ], FlugSuchen);
         return FlugSuchen;
     })();

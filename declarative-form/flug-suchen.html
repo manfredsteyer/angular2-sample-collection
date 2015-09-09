@@ -6,13 +6,11 @@
         
         <div class="form-group">
             <label for="von">Von: </label>
-            <input city ng-control="von" type="text" [(ng-model)]="filter.von" required class="form-control">
+            <input ng-control="von" type="text" [(ng-model)]="filter.von" required city class="form-control">
             
             <div *ng-if="!f.controls.von.valid">Zielort nicht gültig.</div>
             <div *ng-if="f.controls.von.hasError('required')">Zielort ist ein Pflichtfeld.</div>
             <div *ng-if="f.controls.von.hasError('city')">Stadt wird nicht angeflogen.</div>
-
-
         </div>
 
         <div class="form-group">
@@ -21,11 +19,10 @@
 
             <div *ng-if="!f.controls.nach.valid">Zielort nicht gültig.</div>
             <div *ng-if="f.controls.nach.hasError('required')">Zielort ist ein Pflichtfeld.</div>
-
         </div>
 
         <div class="form-group">
-            <input type="button" [disabled]="!f.valid" value="Suchen" (click)="flugSuchen(f)" class="btn">
+            <input type="button" [disabled]="!f.valid" value="Suchen" (click)="flugSuchen()" class="btn">
         </div>
 
     </form>

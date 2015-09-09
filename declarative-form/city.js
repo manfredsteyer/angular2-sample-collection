@@ -20,7 +20,11 @@ define(["require", "exports", 'angular2/angular2'], function (require, exports, 
             configurable: true
         });
         CityValidator.validate = function (c) {
-            if (c.value != "Graz") {
+            var validValues = ["Graz", "Hamburg", "Wien", "Frankfurt"];
+            var cnt = validValues
+                .filter(function (item) { return item == c.value; })
+                .length;
+            if (cnt == 0) {
                 return { city: true };
             }
         };

@@ -4,24 +4,23 @@ import {Component, View, bootstrap, NgFor, NgIf, Inject} from 'angular2/angular2
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Control, Validators} from 'angular2/angular2';
 import {FlugService} from 'flug-service';
 import {CityValidator} from 'city'; 
- 
+  
 @Component({
     selector: 'flug-suchen'
 })
 @View({
-  templateUrl: 'flug-suchen.html',
-  directives: [NgFor, NgIf, FORM_DIRECTIVES, CityValidator]
+    templateUrl: 'flug-suchen.html',
+    directives: [NgFor, NgIf, FORM_DIRECTIVES, CityValidator]
 })
 export class FlugSuchen {
 
-    form;
+    filter;
     fluege;
     selectedFlug;
-    filter;
     message;
     flugService: FlugService;
     
-    constructor(flugService: FlugService, fb: FormBuilder) {
+    constructor(flugService: FlugService) {
         
         this.fluege = [];
         
@@ -33,11 +32,7 @@ export class FlugSuchen {
         this.flugService = flugService;
     }
     
-    selectFlug(flug) {
-        this.selectedFlug = flug;
-    }
-    
-    flugSuchen(f) {
+    flugSuchen() {
 
         var filter = this.filter;
         this
@@ -48,5 +43,8 @@ export class FlugSuchen {
                 this.message = fluege.length + " Flüge geladen!";
             });
     }
-    
+
+    selectFlug(flug) {
+        this.selectedFlug = flug;
+    }    
 }
