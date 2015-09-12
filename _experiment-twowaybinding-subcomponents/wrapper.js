@@ -9,24 +9,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", 'angular2/angular2'], function (require, exports, angular2_1) {
-    var FlugService = (function () {
-        function FlugService() {
+define(["require", "exports", 'angular2/angular2', 'option-box'], function (require, exports, angular2_1, option_box_1) {
+    var Wrapper = (function () {
+        function Wrapper() {
         }
-        FlugService.prototype.find = function (von, nach) {
-            var url = "http://www.angular.at/api/flug"
-                + "?abflugOrt="
-                + encodeURIComponent(von)
-                + "&zielOrt="
-                + encodeURIComponent(nach);
-            return fetch(url).then(function (r) { return r.json(); });
-        };
-        FlugService = __decorate([
-            angular2_1.Injectable(), 
+        Wrapper = __decorate([
+            angular2_1.Component({
+                selector: 'wrapper',
+                properties: ['value']
+            }),
+            angular2_1.View({
+                template: "\n\t\t<div style='border: 2px solid red'>\n\t\t\tCurrent Value: {{ value | json }}\n\t\t\t<div>\n\t\t\t\t<option-box [value]='value'></option-box>\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t\t<option-box [value]='value'></option-box>\n\t\t\t</div>\n\t\t</div>",
+                directives: [option_box_1.OptionBox]
+            }), 
             __metadata('design:paramtypes', [])
-        ], FlugService);
-        return FlugService;
+        ], Wrapper);
+        return Wrapper;
     })();
-    exports.FlugService = FlugService;
+    exports.Wrapper = Wrapper;
 });
-//# sourceMappingURL=flug-service.js.map
+//# sourceMappingURL=wrapper.js.map

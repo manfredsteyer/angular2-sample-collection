@@ -1,0 +1,57 @@
+<div class="container">
+
+    <h1>Search Flights</h1>
+    
+    <div [ng-form-model]="filter">
+        
+        <div class="form-group">
+            <label for="from">From: </label>
+            <input id="from" ng-control="from" type="text" class="form-control">
+            <div *ng-if="!filter.controls.from.valid">Bitte geben Sie einen Abflightort an.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="to">To: </label>
+            <input id="to" ng-control="to" type="text" class="form-control">
+            <div *ng-if="!filter.controls.to.valid">Bitte geben Sie einen Zielort an!</div>
+        </div>
+
+        <div class="form-group">
+            <input type="button" value="Search" (click)="searchFlight()" class="btn">
+        </div>
+
+    </div>
+
+    <div *ng-if="message" class="alert alert-info alert-dismissible" >
+        {{ message }}
+    </div>
+    
+    <table class="table table-striped" *ng-if="flights.length != 0">
+
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            
+            <tr *ng-for="#flight of flights" [class.info]="selectedFlight == flight">
+
+                <td>{{flight.id}}</td>
+                <td>{{flight.datum.substr(0,10)}}</td>
+                <td>{{flight.abflugort}}</td>
+                <td>{{flight.zielort}}</td>
+
+                <td><a href="javascript:void(0)" (click)="selectFlight(flight)">Select</a></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

@@ -10,23 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", 'angular2/angular2'], function (require, exports, angular2_1) {
-    var FlugService = (function () {
-        function FlugService() {
+    var FlightService = (function () {
+        function FlightService() {
         }
-        FlugService.prototype.find = function (von, nach) {
+        FlightService.prototype.find = function (from, to) {
             var url = "http://www.angular.at/api/flug"
                 + "?abflugOrt="
-                + encodeURIComponent(von)
+                + encodeURIComponent(from)
                 + "&zielOrt="
-                + encodeURIComponent(nach);
+                + encodeURIComponent(to);
             return fetch(url).then(function (r) { return r.json(); });
         };
-        FlugService = __decorate([
+        FlightService = __decorate([
             angular2_1.Injectable(), 
             __metadata('design:paramtypes', [])
-        ], FlugService);
-        return FlugService;
+        ], FlightService);
+        return FlightService;
     })();
-    exports.FlugService = FlugService;
+    exports.FlightService = FlightService;
 });
-//# sourceMappingURL=flug-service.js.map
+//# sourceMappingURL=flight-service.js.map

@@ -1,3 +1,4 @@
+///<reference path="../typings/typings.d.ts"/>
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
@@ -9,24 +10,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", 'angular2/angular2'], function (require, exports, angular2_1) {
-    var FlugService = (function () {
-        function FlugService() {
+define(["require", "exports", 'angular2/angular2', 'angular2/angular2', 'wrapper'], function (require, exports, angular2_1, angular2_2, wrapper_1) {
+    var App = (function () {
+        function App() {
+            this.model = {
+                info: "Some Model",
+                option: 1
+            };
         }
-        FlugService.prototype.find = function (von, nach) {
-            var url = "http://www.angular.at/api/flug"
-                + "?abflugOrt="
-                + encodeURIComponent(von)
-                + "&zielOrt="
-                + encodeURIComponent(nach);
-            return fetch(url).then(function (r) { return r.json(); });
-        };
-        FlugService = __decorate([
-            angular2_1.Injectable(), 
+        App = __decorate([
+            angular2_2.Component({
+                selector: 'app'
+            }),
+            angular2_2.View({
+                templateUrl: 'app.html',
+                directives: [wrapper_1.Wrapper]
+            }), 
             __metadata('design:paramtypes', [])
-        ], FlugService);
-        return FlugService;
+        ], App);
+        return App;
     })();
-    exports.FlugService = FlugService;
+    angular2_1.bootstrap(App);
 });
-//# sourceMappingURL=flug-service.js.map
+//# sourceMappingURL=app.js.map

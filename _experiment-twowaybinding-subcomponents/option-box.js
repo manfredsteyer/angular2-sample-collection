@@ -10,23 +10,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", 'angular2/angular2'], function (require, exports, angular2_1) {
-    var FlugService = (function () {
-        function FlugService() {
+    var OptionBox = (function () {
+        function OptionBox() {
+            this.valueChanged = new angular2_1.EventEmitter();
         }
-        FlugService.prototype.find = function (von, nach) {
-            var url = "http://www.angular.at/api/flug"
-                + "?abflugOrt="
-                + encodeURIComponent(von)
-                + "&zielOrt="
-                + encodeURIComponent(nach);
-            return fetch(url).then(function (r) { return r.json(); });
+        OptionBox.prototype.nextValue = function () {
+            this.value.option++;
+            if (this.value.option > 5)
+                this.value.option = 1;
+            this.valueChanged.next(this.value);
         };
-        FlugService = __decorate([
-            angular2_1.Injectable(), 
+        OptionBox = __decorate([
+            angular2_1.Component({
+                selector: 'option-box',
+                properties: ['value'],
+                events: ['valueChanged: value']
+            }),
+            angular2_1.View({
+                templateUrl: 'option-box.html'
+            }), 
             __metadata('design:paramtypes', [])
-        ], FlugService);
-        return FlugService;
+        ], OptionBox);
+        return OptionBox;
     })();
-    exports.FlugService = FlugService;
+    exports.OptionBox = OptionBox;
 });
-//# sourceMappingURL=flug-service.js.map
+//# sourceMappingURL=option-box.js.map

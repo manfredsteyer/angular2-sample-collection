@@ -1,0 +1,1 @@
+This is just an experiment to try out how changes to objects that are referenced by multiple components are affected.
